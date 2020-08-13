@@ -191,4 +191,4 @@ axis(side = 4)
 mtext("R0 estimation", side = 4, line = 3)
 ```
 
-<img src="https://github.com/shuangj00/BayesSMILES/demo_page/tut_page_files/figure-gfm/plot_result-1.png" style="display: block; margin: auto;" />
+<img src="https://github.com/shuangj00/BayesSMILES/raw/master/demo_page/tut_page_files/figure-gfm/plot_result-1.png" style="display: block; margin: auto;" />
