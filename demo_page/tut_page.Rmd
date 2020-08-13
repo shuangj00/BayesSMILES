@@ -1,5 +1,7 @@
 ---
-output: html_document
+output:
+  github_document:
+    pandoc_args: --webtex
 ---
 
 ```{r setup, include=FALSE}
