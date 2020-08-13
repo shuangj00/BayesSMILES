@@ -155,7 +155,6 @@ detect_changepoint = function(input.df,
                            gamma_vec = gamma.ppm.update,
                            population = population,
                            Niter = NITER,
-                           omega = OMEGA,
                            h_prior = h_prior,
                            update_gamma = FALSE,
                            sig_error = sigma2)
