@@ -137,16 +137,16 @@
         var changePoint_line = changePoint.map( function(x) { 
             return {
                 "name" : "CP", xAxis: x["estimate"][0], 
-                "label": "R0 estimate: " + x["estimate"][0] + 
+                "label": "Changpoint<br/>Estimate: " + x["estimate"][0] + 
                 (x["span"].length === 2 ? "<br/>CI: " + x["span"][0] + " to " + x["span"][1] : "") } });            
         var changePoint_area = changePoint.map( function(x) { return {
             "span": x["span"],
-            "label": "R0 estimate: " + x["estimate"][0] + "<br/>CI: " + x["span"][0] + " to " + x["span"][1]}});
+            "label": "Changpoint<br/>Estimate: " + x["estimate"][0] + "<br/>CI: " + x["span"][0] + " to " + x["span"][1]}});
         changePoint_area = changePoint_area.filter(function(x) {return x["span"].length === 2});
         changePoint_area = changePoint_area.map(x => [ {label: x["label"], coord: [x["span"][0], max_infected * 0.1]}, {coord: [x["span"][1], max_infected * 0.9]}]);
         var r0 = DATA[i]["r0"];
 
-        var r0_text = r0.map(x=>x["estimate"][0]);
+        var r0_text = r0.map(x=>"<br/>Estimate: " + x["estimate"][0]+ "<br/>CI: " + x["ci"][0] + " to " + x["ci"][1] + "<br/>Segment: " + x["span"][0] + " to " + x["span"][1]);
         var r0_span = r0.map(x=>x["span"]);
         getMidDate = function (x) {
             // d1 = new Date("2020-03-25");
@@ -157,6 +157,7 @@
             elapsed = d2.getTime() - d1.getTime();
             dMid = new Date();
             dMid.setTime(d1.getTime() + elapsed / 2);
+            // console.log(x);
             return dMid.toJSON().substring(0, 10)
         }
         r0_span = r0_span.map(x => getMidDate(x));
@@ -175,10 +176,10 @@
                     //     console.log(params[0]);     
                     if (params.componentType == "series") {
                         if (params.seriesName == "R0") {
-                            return "R0 = " + r0_text[params.dataIndex];
+                            return "<b>R0</b>" + r0_text[params.dataIndex];
                         } else if (params.componentSubType == "line") {
                            // console.log("line:", params);
-                            return "Infected on " + params.data[0] + "<br/>" + params.data[1]   ;
+                            return "Actively infected cases<br/>Date: " + params.data[0] + "<br/>Number:" + params.data[1]   ;
                         } else {
                             
                         }
@@ -219,7 +220,19 @@
             // },
             xAxis: {
                 type: 'time',
-                boundaryGap: false                
+                boundaryGap: false,
+                // Use callback function; function parameters are axis index
+                axisLabel: {
+                    formatter: function (value, index) {
+                        // Formatted to be month/day; display year only in the first label
+                        var date = new Date(value);
+                        var texts = [(date.getMonth() + 1), date.getDate()];
+                        // if (idx === 0) {
+                        //     texts.unshift(date.getYear());
+                        // }
+                        return texts.join('/');
+                    }
+                }                
                 // axisLabel: {
                 //     formatter: function(value, idx) {
                 //         console.log('xaxis formatter', value);
@@ -289,7 +302,7 @@
             console.log(params);
         });
     }
-    $.getJSON( "us_lag10.json", function( data ) {
+    $.getJSON("us50states_JHU.json", function( data ) {
         DATA = data;
         //create 21 boxes
         var r = document.getElementById('container');
