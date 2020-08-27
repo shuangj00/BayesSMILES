@@ -141,11 +141,11 @@
         var changePoint_line = changePoint.map( function(x) { 
             return {
                 "name" : "CP", xAxis: x["estimate"][0], 
-                "label": "Changpoint<br/>Estimate: " + x["estimate"][0] + 
+                "label": "<b>Change Point</b><br/>Estimate: " + x["estimate"][0] + 
                 (x["span"].length === 2 ? "<br/>CI: " + x["span"][0] + " to " + x["span"][1] : "") } });            
         var changePoint_area = changePoint.map( function(x) { return {
             "span": x["span"],
-            "label": "Changpoint<br/>Estimate: " + x["estimate"][0] + "<br/>CI: " + x["span"][0] + " to " + x["span"][1]}});
+            "label": "<b>Change Point</b><br/>Estimate: " + x["estimate"][0] + "<br/>CI: " + x["span"][0] + " to " + x["span"][1]}});
         changePoint_area = changePoint_area.filter(function(x) {return x["span"].length === 2});
         changePoint_area = changePoint_area.map(x => [ {label: x["label"], coord: [x["span"][0], max_infected * 0.1]}, {coord: [x["span"][1], max_infected * 0.9]}]);
         var r0 = DATA[i]["r0"];
@@ -180,10 +180,10 @@
                     //     console.log(params[0]);     
                     if (params.componentType == "series") {
                         if (params.seriesName == "R0") {
-                            return "<b>R0</b>" + r0_text[params.dataIndex];
+                            return "<b>Reproduction number</b>" + r0_text[params.dataIndex];
                         } else if (params.componentSubType == "line") {
                            // console.log("line:", params);
-                            return "Actively infected cases<br/>Date: " + params.data[0] + "<br/>Number:" + params.data[1]   ;
+                            return "Daily actively infectious count<br/>Date: " + params.data[0] + "<br/>Number: " + params.data[1]   ;
                         } else {
                             
                         }
