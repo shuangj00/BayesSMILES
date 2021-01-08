@@ -196,4 +196,4 @@ mtext("R0 estimation", side = 4, line = 3)
 
 ### Full result
 
-Our manuscript is available at https://www.medrxiv.org/content/10.1101/2020.10.06.20208132v2. The full results for the 50 U.S. states we analyzed in the manuscript is summarized at https://shuangj00.github.io/BayesSMILES/.
+Our manuscript is available at https://www.medrxiv.org/content/10.1101/2020.10.06.20208132v2. The full results for the 50 U.S. states we analyzed in the manuscript is summarized at https://shuangj00.github.io/BayesSMILES/. For the analysis results with an extented time period from March to October, please check: https://shuangj00.github.io/BayesSMILES/index_ext.html.
