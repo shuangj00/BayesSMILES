@@ -144,6 +144,11 @@ detect_changepoint = function(input.df,
       gamma.ppm.update = rep(0, length(gamma_ppm))
       gamma.ppm.update[gamma.ppm.idx ] =1
       
+      # gamma map #
+      post_trace = res_step1$posterior_trace
+      map_index = which.max(post_trace)
+      gamma_map = gamma_mcmc[map_index, ]
+      
       rm(res_step1)
       rm(gamma_mcmc)
       
@@ -176,6 +181,7 @@ detect_changepoint = function(input.df,
       psis_score = round(sum(psis_approx), 3)
       psis_scores[rr] = psis_score
       
+      
       # estimate parameters in the regression model # 
       theta_mcmc = res_step2$theta_mcmc
       theta_res = t(apply(theta_mcmc, 2, 
@@ -198,6 +204,7 @@ detect_changepoint = function(input.df,
       
       res_list = list(psis_score = psis_score,
                       gamma_ppm = gamma.ppm.update, 
+                      gamma_map = gamma_map,
                       gamma_ppm_old = gamma_ppm,
                       gamma_ppi = gamma_ppi, 
                       change_points = gamma.ppm.idx,
