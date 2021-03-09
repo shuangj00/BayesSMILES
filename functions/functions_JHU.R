@@ -214,7 +214,7 @@ detect_changepoint = function(input.df,
   names(ret_list) = names(psis_scores) = round(SIGMA2_GRID, 4)
   
   # select the top optimal settings #
-  opt_score = sort(psis_scores)[1:SELECT_NUM]
+  opt_score = base::sort(psis_scores)[1:SELECT_NUM]
   opt_settings = unlist(lapply(opt_score, function(x){which(psis_scores == x) } ))
   ret_opt = ret_list[opt_settings]
   rm(ret_list)
@@ -336,7 +336,7 @@ get.gamma.ci = function(gamma.ppm, gamma.mcmc){
     cp.window = gamma.ci.list[[ii]][2]$window.res
     wd.vec = wd.check[which(cp.window == 1)]
     wd.t.idx = cp.idx + wd.vec
-    wd.t.idx = sort(c(wd.t.idx, cp.idx))
+    wd.t.idx = base::sort(c(wd.t.idx, cp.idx))
     cp.all = c(cp.all, wd.t.idx)
   }
   cp.all = c(1, unique(cp.all))
@@ -389,7 +389,7 @@ detect.overlap = function(x){
   }else{
     all.idx = cp.idx
   }
-  all.idx = sort(all.idx)
+  all.idx = base::sort(all.idx)
   return(all.idx)
   
 }
