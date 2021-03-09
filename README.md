@@ -2,7 +2,7 @@
 # BayesSMILES
 
 <u>Bayes</u>ian <u>S</u>egmentation <u>M</u>odel<u>I</u>ng for
-<u>L</u>ongitudinal <u>E</u>pidemiological <u>S</u>tudies
+<u>L</u>ongitudinal <u>E</u>pidemiological <u>S</u>tudies https://www.medrxiv.org/content/10.1101/2020.10.06.20208132v2
 
 ### Tutorial
 
@@ -192,3 +192,8 @@ mtext("R0 estimation", side = 4, line = 3)
 ```
 
 <img src="https://github.com/shuangj00/BayesSMILES/raw/master/demo_page/tut_page_files/figure-gfm/plot_result-1.png" style="display: block; margin: auto;" />
+
+
+### Full result
+
+Our manuscript is available at https://www.medrxiv.org/content/10.1101/2020.10.06.20208132v2. The full results for the 50 U.S. states we analyzed in the manuscript is summarized at https://shuangj00.github.io/BayesSMILES/. For the analysis results with an extented time period from March to October, please check: https://shuangj00.github.io/BayesSMILES/index_ext.html.
